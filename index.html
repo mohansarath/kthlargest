@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Level1</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script>
+        var numbers = [];
+        var i;
+        var j;
+        var temp;
+        var n;
+        function add() {
+            var num;
+            num = parseInt(document.getElementById("enter").value);
+            numbers.push(num);
+            document.getElementById("el").innerHTML = numbers;
+        }
+        function position() {
+            n = numbers.length;
+            console.log(n);
+            for (i = 0; i < n; i++) {
+                for (j = 0; j < n - i - 1; j++) {
+                    if (numbers[j] > numbers[j + 1]) {
+                        temp = numbers[j];
+                        numbers[j] = numbers[j + 1];
+                        numbers[j + 1] = temp;
+                    }
+                }
+            }
+            numbers.reverse();
+            var pos = document.getElementById("find").value;
+            pos--;
+            var pos1 = pos;
+            document.getElementById("k").innerHTML = numbers[pos1];
+        }
+    </script>
+</head>
+
+<body>
+    <div class="container">
+        <center>
+            <legend>kth Largest number</legend>
+            <p>Enter element :
+                <input type="text" class="form-control-inline" id="enter">
+                <button type="button" class="btn btn-success" onclick="add()">
+                    <span class="glyphicon glyphicon-plus"></span>ADD</button>
+            </p>
+            <p>Elements are :</p>
+            <p id="el"></p>
+            <p>Enter Position :
+                <input type="text" class="form-control-inline" id="find">
+                <button type="button" class="btn btn-success" onclick="position()">
+                    <span class="glyphicon glyphicon-plus"></span>Find</button>
+            </p>
+            <p>Elements is</p>
+            <p id="k"></p>
+        </center>
+    </div>
+</body>
+
+</html>
